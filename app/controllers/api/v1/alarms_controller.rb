@@ -1,5 +1,6 @@
 class Api::V1::AlarmsController < ApplicationController
   before_action :format_params, except: [:index]
+  before_action :find_alarm, only: [:update, :destroy]
 
   def index
     alarms = Alarm.all
@@ -16,18 +17,16 @@ class Api::V1::AlarmsController < ApplicationController
   end
 
   def update
-    alarm = Alarm.find(params[:id])
-    if alarm.update(alarm_params)
-      render json: alarm
+    if @alarm && @alarm.update(alarm_params)
+      render json: @alarm
     else
       render json: { error: 'Did Not Update'}
     end
   end
 
   def destroy
-    alarm = Alarm.find(params[:id])
-    if alarm.destroy
-      render json: alarm
+    if @alarm && @alarm.destroy
+      render json: @alarm
     else
       render json: { error: 'Did Not Delete'}
     end
@@ -47,6 +46,10 @@ class Api::V1::AlarmsController < ApplicationController
 
     def to_bool(int)
       int == 1
+    end
+
+    def find_alarm
+      @alarm = Alarm.find_by(id: params[:id])
     end
 
 end

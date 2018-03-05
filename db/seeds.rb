@@ -13,3 +13,7 @@ Alarm.create([{ active: false, time: '10:45 PM', itemized: false, localized: fal
 ItineraryItem.create([{ name: 'Brush Teeth', time: 10, time_unit: 0 },
                       { name: 'Shower', time: 15, time_unit: 0 },
                       { name: 'Do Hair', time: 1, time_unit: 1 }])
+
+Location.create([{name: 'Turing School of Software and Design', latitude: 39.751081, longitude: -104.996638 },
+                 {name: 'Googleplex', latitude: 37.428665, longitude: -122.083595 },
+                 {name: 'Village Inn, Federal Boulevard, Denver, CO', latitude: 39.785181, longitude: -105.024689}])
