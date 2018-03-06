@@ -45,7 +45,7 @@ class Api::V1::AlarmsController < ApplicationController
     end
 
     def to_bool(int)
-      int == 1
+      int == 1 || int == '1'
     end
 
     def find_alarm
